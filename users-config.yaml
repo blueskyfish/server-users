@@ -1,0 +1,21 @@
+#
+# Example Config file
+#
+
+name: 'Backend Users'
+
+#
+# State
+# - "prod"  run in stage "prod"
+# - "dev"   run in stage "dev"
+#
+stage: 'prod'
+
+# Section http
+http:
+  port: 8080
+  host: '0.0.0.0'
+
+# Section "log"
+log:
+  level: 'debug'
