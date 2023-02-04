@@ -3,6 +3,7 @@ package http
 import (
 	"fmt"
 	"github.com/blueskyfish/server-users/configuration"
+	"github.com/blueskyfish/server-users/http/context"
 	"github.com/blueskyfish/server-users/http/log"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -14,8 +15,9 @@ func LogMiddleware(conf *configuration.Configuration, group string) echo.Middlew
 	logger := log.NewHttpLogger(conf, group)
 	return func(next echo.HandlerFunc) echo.HandlerFunc {
 		return func(ctx echo.Context) error {
-			ctx.SetLogger(logger)
-			return next(ctx)
+			serverCtx := context.NewServerContext(conf, ctx)
+			serverCtx.SetLogger(logger)
+			return next(serverCtx)
 		}
 	}
 }

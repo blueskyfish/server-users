@@ -4,7 +4,7 @@ import (
 	"embed"
 	"github.com/blueskyfish/server-users/configuration"
 	"github.com/blueskyfish/server-users/http/log"
-	"github.com/blueskyfish/server-users/route"
+	"github.com/blueskyfish/server-users/http/route"
 	"github.com/labstack/echo/v4"
 	mw "github.com/labstack/echo/v4/middleware"
 	"io/fs"

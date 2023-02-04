@@ -32,7 +32,7 @@ func (conf Configuration) Log() *logrus.Logger {
 func (conf Configuration) Stage() string {
 	state := viper.GetString("stage")
 	if state == "" {
-		state = "dev"
+		state = StageDev
 	}
 	return state
 }

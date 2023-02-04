@@ -1,14 +1,16 @@
 package configuration
 
 import (
+	. "github.com/blueskyfish/server-users/repository"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 	"os"
 )
 
 type Configuration struct {
-	name string
-	log  *logrus.Logger
+	name       string
+	log        *logrus.Logger
+	repository *Repository
 }
 
 const StageDev = "dev"
