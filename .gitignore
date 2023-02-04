@@ -1,5 +1,10 @@
 .idea/
 
+#
+# Docker volumes
+#
+var/
+
 # Binaries for programs and plugins
 *.exe
 *.exe~

@@ -1,0 +1,41 @@
+#
+# Docker Compose for local "developer" environment
+#
+version: '3.8'
+
+services:
+  db:
+    image: mariadb:latest
+    container_name: server-users
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./var/mariadb:/var/lib/mysql
+    networks:
+      - server-net
+    environment:
+      - MARIADB_ROOT_PASSWORD=users1234
+      - MARIADB_USER=users
+      - MARIADB_PASSWORD=users1234
+      - MARIADB_DATABASE=users
+  db-admin:
+    image: phpmyadmin/phpmyadmin
+    container_name: server-admin-users
+    restart: unless-stopped
+    ports:
+      - "8082:80"
+    networks:
+      - server-net
+    depends_on:
+      - db
+    links:
+      - db:db
+    environment:
+      - MYSQL_ROOT_PASSWORD=users1234
+      - MYSQL_USER=users
+      - MYSQL_PASSWORD=users1234
+      - MYSQL_DATABASE=users
+
+networks:
+  server-net:
