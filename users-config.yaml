@@ -9,7 +9,7 @@ name: 'Backend Users'
 # - "prod"  run in stage "prod"
 # - "dev"   run in stage "dev"
 #
-stage: 'prod'
+stage: 'dev'
 
 # Section http
 http:
